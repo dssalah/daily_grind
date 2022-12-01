@@ -122,14 +122,14 @@ switch(myDay){
             pic: "pumpkin-spice-latte.jpg",
             alt: "A picture of a pumpkin spic latte",
             day: "Saturday",
-            desc: `which makes us wish it was always Fall, as this is one of our top sellers!`
+            desc: `Which makes us wish it was always Fall, as this is one of our top sellers!`
         };
     break;
 
     case 0:
         today = "Sunday";
         coffee = {
-            color:"black",
+            color:"grey",
             name: "Mocha",
             pic: "mocha.jpg",
             alt: "A picture of a mocha",
@@ -139,7 +139,7 @@ switch(myDay){
     break;
 
     default:
-        alert("something went wrong!");
+        alert("Something went wrong!");
 }
 
 console.log(coffee);
