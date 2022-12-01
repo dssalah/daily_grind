@@ -39,6 +39,11 @@ nav ul li
 		display:inline-block; /* makes horizontal, but able to declare margins */
 		margin:0 2%; /* margin left-right, gets smaller as necessary */
 	}
+nav a {
+	text-decoration: none;
+	color:black;
+}
 nav a:hover{
 	text-decoration: none;
+	color:blue;
 }	

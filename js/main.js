@@ -1,132 +1,149 @@
+//alert("Can you see this?");
+
+/*
+    Rotate by Day of Week: Use HTML/CSS & JavaScript to create a single page that rotates unique colors and content for each weekday (Sunday to Saturday) into the page. 
+    The content must include:
+    One unique image, with appropriate and matching content in the alt tag.  
+    A paragraph or two of content that describes the daily item (paragraph must include
+    the name of the highlighted weekday)
+    A unique color that supports the image and paragraph of content
+    Image (of specific coffee)
+    alt tag (identifies type of coffee)
+    description (of this type oof coffee)
+    weekday
+    color (supporting image)
+    The unique color could affect the background HTML, or an element on the page for each day of the week. 
+    All of the above must occur within one page.
+*/
 
 
 
-/* things we need to change for each coffee:
-name - name of coffee/* things we need to change for each coffee:
-name - name of coffee
-pic - image source
-alt - alt tag
-color - color
-desc - description
-day - day of the week */
- 
-let myDate = new Date();
-let myDay = "";
-let today = "";
+function coffeeTemplate(coffee){
+
+    return `<p>
+        <img src="images/${coffee.pic}" alt="${coffee.alt}" id="coffee" />
+        <strong>${coffee.day}'s Coffee Special</strong> : ${coffee.day}'s daily coffee special is ${coffee.name}, ${coffee.desc}
+    </p>`;
+
+}
+
+
+
+let myDate = new Date() ;
+let today = myDate.getDay();
 let coffee = "";
+let myDay = "";
+
+//use location object to access querystring (address bar)
 const queryString = window.location.search;
+    
+//output to console    
+console.log(queryString);
+    
+//separate querystring parameters
 const urlParams = new URLSearchParams(queryString);
- 
-if(urlParams.has('day')) {
-    myDay = urlParams.get('day');
+
+if(urlParams.has("day")){//from querystring
+    myDay = urlParams.get("day")
+}else{//today's day of week
+    myDay = today;
 }
-else {
-    myDay = myDate.getDay();
-}
- 
-myDay = parseInt(myDay);
- 
-function coffeeTemplate(coffee) {
-    let myReturn = "";
-    myReturn += `<p>
-                    <img src="${coffee.pic}" alt="${coffee.alt}" id="coffee"/>
-                    <strong class="feature">${coffee.day}'s Coffee Special:</strong><br> ${coffee.day}'s daily coffee special is <strong class="feature">${coffee.name}</strong>${coffee.desc}
-                </p>`;
-    return myReturn;
-}
- 
- 
- 
-switch(myDay) {
-    case 0:
-        today = "Sunday";
-        coffee = {
-            name: "caramel-latte",
-            pic: "images/caramel-latte.jpg",
-            alt: "A picture of an espress topped with whipped cream and cinnamon in a white ceramic cup.",
-            color: "#00FFFF",
-            desc: `.<br>Brought to you from Italy, the espresso con panna is a simple but delicious drink. Consisting of espresso topped with a small mountain of whipped cream and a dusting of cinnamon, it's a truly decadent, and we know you're going to love it!`,
-            day: "Sunday"
-        };
-        break;
- 
+
+//change string to an integer
+myDay = parseInt(myDay)
+
+
+switch(myDay){
     case 1:
         today = "Monday";
         coffee = {
-            name: "pumpkin spice latte",
-            pic: "images/pumpkin-spice-latte.jpg",
-            alt: "A picture of a pumpkin spice latte in an orange ceramic mug.",
-            color: "#FF7518",
-            desc: `.<br>Our pumpkin spice latte makes us wish it was always fall, as this is one of our top sellers! Made with cinnamon, nutmeg, ground clove, just a touch of pumpkin puree, and (of course) sugar, this is sure to be the best pumpkin spice latte you've ever tasted!`,
-            day: "Monday"
+            color:"pink",
+            name: "Bubble Tea",
+            pic: "bubble-tea.jpg",
+            alt: "A picture of a bubble tea",
+            day: "Monday",
+            desc: `I like me some Bubble Tea!`
         };
-        break;
- 
+    break;
+
     case 2:
         today = "Tuesday";
         coffee = {
-            name: "milky way frapppaccino",
-            pic: "images/frappaccino.jpg",
-            alt: "A milky way fappuccino in a white ceramic cup with an intricate flower-like design in caramel and chocolate on the top.",
-            color: "blue",
-            desc: `.<br>Our milky way cappuccino is to die for. Made with milk chocolate, caramel, and topped with whipped cream and swirls of milk chocolate and caramel syrups in an intricate pattern, this drink is heaven in a cup!<br>The milky way is also available as a latte, if that's more your style.`,
-            day: "Tuesday"
+            color:"brown",
+            name: "Caramel Latte",
+            pic: "caramel-latte.jpg",
+            alt: "A picture of a caramel latte",
+            day: "Tuesday",
+            desc: `It's cold, so caramel latte sounds good!`
         };
-        break;
- 
+    break;
+
     case 3:
         today = "Wednesday";
         coffee = {
-            name: "drip coffee",
-            pic: "images/drip.jpg",
-            alt: "A picture of a drip coffee.",
-            color: "green",
-            desc: `.<br>Made with natural spring water boiled and then slowly poured over finely ground coffee beans. With a strong, bold flavor, we're sure you're going to love it!<br>Our drip coffee is usually made with dark roasted coffee beans, but medium roast and light roast are available on request!`,
-            day: "Wednesday"
+            color:"black",
+            name: "Cold Brew",
+            pic: "cold-brew.jpg",
+            alt: "A picture of a cold brew",
+            day: "Wednesday",
+            desc: `Cold brew for when we're serious!`
         };
-        break;
- 
+    break;
+    
     case 4:
         today = "Thursday";
         coffee = {
-            name: "mocha",
-            pic: "images/mocha.jpg",
-            alt: "A picture of a mocha in a white ceramic coffee cup.",
-            color: "violet",
-            desc: `.<br>Our mochas are made with the finest dark cocoa powder and topped with a dash of whipped cream and a milk chocolate drizzle that we make ourselves right here in the shop.<br>If you'd like to add a bit of a kick, ask for our Mexican mocha, which has chili powder added to it!`,
-            day: "Thursday"
+            color:"yellow",
+            name: "Drip",
+            pic: "drip.jpg",
+            alt: "A picture of a drip",
+            day: "Thursday",
+            desc: `Wow what a lovely drink!`
         };
-        break;
-   
+    break;
+
     case 5:
         today = "Friday";
         coffee = {
-            name: "cold-brew",
-            pic: "images/cold-brew.jpg",
-            alt: "A picture of a old-brew, an espresso shot with steamed milk in a small glass cup.",
-            color: "yellow",
-            desc: `.<br>Our cold-brew is made with the finest dark roast ground coffee beans, for maximum flavor in your espresso. The steamed milk adds just a touch of sweetness to the shot--if you're an espresso lover, this is the drink for you!`,
-            day: "Friday"
+            color:"violet",
+            name: "Frappaccino",
+            pic: "frappaccino.jpg",
+            alt: "A picture of a frappaccino",
+            day: "Friday",
+            desc: `Who could pass on a Frappaccino?`
         };
-        break;
- 
+    break;
+    
     case 6:
         today = "Saturday";
         coffee = {
-            name: "bubble-tea",
-            pic: "images/bubble-tea.jpg",
-            alt: "A bubble-tea latte in a white ceramic cup,.",
-            color: "grey",
-            desc: `.<br>We know, it's an unusual one! But we find the bubble-tea latte to be a soothing and mellow cup of coffee--perfect for an afternoon drink on a weekend! Made with our homemade lavender simple syrup and sprinkled with a touch of dried milk, this one's a shop favorite.`,
-            day: "Saturday"
+            color:"orange",
+            name: "Pumpkin Spic latte",
+            pic: "pumpkin-spice-latte.jpg",
+            alt: "A picture of a pumpkin spic latte",
+            day: "Saturday",
+            desc: `which makes us wish it was always Fall, as this is one of our top sellers!`
         };
-        break;
-   
+    break;
+
+    case 0:
+        today = "Sunday";
+        coffee = {
+            color:"black",
+            name: "Mocha",
+            pic: "mocha.jpg",
+            alt: "A picture of a mocha",
+            day: "Sunday",
+            desc: `Are you up for some AWESOME Mocha?!`
+        };
+    break;
+
+    default:
+        alert("something went wrong!");
 }
- 
+
 console.log(coffee);
- 
-document.getElementById("coffee-output").innerHTML = coffeeTemplate(coffee);
-document.getElementsByClassName("feature")[0].style.color = coffee.color;
-document.getElementsByClassName("feature")[1].style.color = coffee.color;
-document.styleSheets[1].cssRules[0].style.setProperty("background-color", coffee.color)
+document.getElementById("coffee-template").innerHTML = coffeeTemplate(coffee);
+
+ //change the background color of the HTML element
+document.querySelector("html").style.backgroundColor = coffee.color;
