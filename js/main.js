@@ -53,6 +53,7 @@ if(urlParams.has("day")){//from querystring
 myDay = parseInt(myDay)
 
 
+
 switch(myDay){
     case 1:
         today = "Monday";
