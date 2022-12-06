@@ -22,7 +22,7 @@ function coffeeTemplate(coffee){
 
     return `<p>
         <img src="images/${coffee.pic}" alt="${coffee.alt}" id="coffee" />
-        <strong>${coffee.day}'s Coffee Special</strong> : ${coffee.day}'s daily coffee special is ${coffee.name}, ${coffee.desc}
+        <strong style="color:${coffee.color};"> ${coffee.day}'s Coffee Special</strong> : ${coffee.day}'s daily coffee special is ${coffee.name}, ${coffee.desc}
     </p>`;
 
 }
@@ -33,6 +33,7 @@ let myDate = new Date() ;
 let today = myDate.getDay();
 let coffee = "";
 let myDay = "";
+ 
 
 //use location object to access querystring (address bar)
 const queryString = window.location.search;
@@ -53,11 +54,11 @@ if(urlParams.has("day")){//from querystring
 myDay = parseInt(myDay)
 
 
-
 switch(myDay){
     case 1:
         today = "Monday";
         coffee = {
+            feature:"pink",
             color:"pink",
             name: "Bubble Tea",
             pic: "bubble-tea.jpg",
@@ -94,7 +95,7 @@ switch(myDay){
     case 4:
         today = "Thursday";
         coffee = {
-            color:"yellow",
+            color:"tan",
             name: "Drip",
             pic: "drip.jpg",
             alt: "A picture of a drip",
@@ -123,7 +124,7 @@ switch(myDay){
             pic: "pumpkin-spice-latte.jpg",
             alt: "A picture of a pumpkin spic latte",
             day: "Saturday",
-            desc: `Which makes us wish it was always Fall, as this is one of our top sellers!`
+            desc: `which makes us wish it was always Fall, as this is one of our top sellers!`
         };
     break;
 
@@ -140,7 +141,7 @@ switch(myDay){
     break;
 
     default:
-        alert("Something went wrong!");
+        alert("something went wrong!");
 }
 
 console.log(coffee);
